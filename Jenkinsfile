@@ -11,7 +11,7 @@ pipeline {
     stage('test') {
       steps {
         echo 'this is the test job'
-        sh 'mvn test'
+        sh 'mvn clean test'
       }
     }
 
@@ -22,16 +22,6 @@ pipeline {
       }
     }
 
-    stage('archive') {
-      steps {
-        archiveArtifacts '**/target/*.jar'
-      }
-    }
-
-  }
-  tools {
-    maven 'maven'
-  }
   post {
     always {
       echo 'this pipeline has completed...'
